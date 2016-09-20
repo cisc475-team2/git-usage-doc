@@ -1,5 +1,48 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[margin=0.7in]{geometry}
+\pagenumbering{gobble}
 \begin{document}
-(Type your content here.)
+\title{CISC475 Team 2 Git(Hub) Usage}
+\date{}
+\maketitle
+\noindent
+For cloning the GitHub repository the first time use one of the following commands:\\
+Note: the second command is only for if you have SSH key(s) setup for GitHub.\\
+\begin{verbatim}
+git clone https://github.com/cisc475-team2/armv8-sim.git
+
+git clone git@github.com:cisc475-team2/armv8-sim.git
+\end{verbatim}
+\ \\
+Work should then be done in your own branch off of the {\tt devel} branch, not the {\tt master} branch.\\
+To create your branch using the following commands:\\
+(replace {\tt <your name>} with your name)\\
+\begin{verbatim}
+git checkout -b devel origin/devel
+git checkout -b <your name>
+\end{verbatim}
+\ \\
+Once you are done making changes add and commit them to your branch however you want.\\
+The following commands will let you commit {\bf ALL} of your current changes:\\
+(replace {\tt <description>} with a short description of changes made)\\
+\begin{verbatim}
+git add *
+git commit -m "<description>"
+\end{verbatim}
+\ \\
+Once you have changes committed that you want to push to GitHub, you should pull the latest version of {\tt devel}, merge it into your branch (so as to have all the latest changes in your personal branch), then merge your branch into {\tt devel}, then push {\tt devel} up to GitHub. The following commands will do all of this for you, and return you to your personal branch.\\
+(replace {\tt <your name>} with your name)\\
+\begin{verbatim}
+git checkout devel
+git pull
+git checkout <your name>
+git merge devel
+git checkout devel
+git merge <your name>
+git push
+git checkout <your name>
+\end{verbatim}
+\ \\
+If you run into any merge conflicts along the way (you should only ever hit them when you run {\tt git merge devel}), you need to find them in whatever file they occur and resolve the differences between your changed copy and the changed copy from the {\tt devel} branch. If you are unsure of how to do this be sure to ask on Slack. Once any merge conflicts are fixed you will need to add and commit your conflict fix and then start this process over again.
 \end{document}
